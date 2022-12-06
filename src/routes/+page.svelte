@@ -1,7 +1,9 @@
 <script>
+	import Cursor from '$lib/components/Cursor.svelte';
 	import WavyText from '$lib/components/WavyText.svelte';
 </script>
 
+<Cursor />
 <div class="box">
 	<WavyText>This is some wavy text</WavyText>
 </div>

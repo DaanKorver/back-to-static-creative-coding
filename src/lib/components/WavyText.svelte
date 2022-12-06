@@ -4,6 +4,7 @@
 	let element: HTMLDivElement;
 	let shouldRender: boolean = true;
 	let letters: string[] = [];
+	export let duration = 600;
 
 	const options = {
 		root: null,
@@ -28,7 +29,9 @@
 			element.insertAdjacentHTML(
 				'beforeend',
 				`
-		  <span style="--delay: ${200 + index * 40}ms">${letter === ' ' ? '&nbsp;' : letter}</span>
+		  <span style="--delay: ${(duration / letters.length) * index}ms">${
+					letter === ' ' ? '&nbsp;' : letter
+				}</span>
 		  `
 			);
 		});
@@ -61,5 +64,6 @@
 		transition: transform cubic-bezier(0.34, 1.56, 0.64, 1) 450ms, opacity ease-out 200ms;
 		transition-delay: var(--delay);
 		opacity: 0;
+		text-transform: uppercase;
 	}
 </style>
