@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let element: HTMLDivElement;
+	let element: HTMLSpanElement;
 	let shouldRender: boolean = true;
 	let letters: string[] = [];
 	export let duration = 600;
@@ -13,6 +13,7 @@
 	};
 
 	onMount(() => {
+		element.style.opacity = '1';
 		// Observer
 		const observer = new IntersectionObserver((entries, observer) => {
 			const wavyText = entries[0];
@@ -38,29 +39,29 @@
 	});
 </script>
 
-<div bind:this={element}>
+<span class="container" bind:this={element}>
 	{#if shouldRender}
 		<slot />
 	{/if}
-</div>
+</span>
 
 <style>
-	div {
+	span {
 		overflow: hidden;
-		font-size: 0;
-		font-weight: bold;
+
+		opacity: 0;
+		font-family: 'Noto Sans', sans-serif;
 	}
 
-	:global(div.visible span) {
+	:global(.container.visible > span) {
 		transform: translateY(0%);
 		opacity: 1;
 	}
 
-	:global(span) {
+	:global(.container > span) {
 		font-size: inherit;
 		transform: translateY(75%);
 		display: inline-block;
-		font-size: 2rem;
 		transition: transform cubic-bezier(0.34, 1.56, 0.64, 1) 450ms, opacity ease-out 200ms;
 		transition-delay: var(--delay);
 		opacity: 0;

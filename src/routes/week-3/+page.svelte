@@ -1,12 +1,10 @@
 <script>
-	import Cursor from '$lib/components/Cursor.svelte';
-	import Entry from '$lib/components/Entry.svelte';
 	import Galery from '$lib/components/Galery.svelte';
 	import GaleryItem from '$lib/components/GaleryItem.svelte';
+	import ScrollIndicator from '$lib/components/ScrollIndicator.svelte';
 </script>
 
-<Cursor />
-<!-- <Entry /> -->
+<ScrollIndicator />
 
 <div>
 	<h1>Cool cat gallery</h1>
